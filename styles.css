@@ -11,12 +11,12 @@ h2 {
 }
 
 .page-header {
-  background-color: #222;
+  background-color: #333;
   color: white;
   padding: 1.5rem;
   text-align: center;
   margin: 0 0 2rem 0;
-  box-shadow: 0 2px 8px #222;
+  box-shadow: 0 2px 8px #333;
 }
 
 .page-header h1 {
@@ -55,14 +55,14 @@ button {
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
   color: white;
-  background-color: #222;
+  background-color: #333;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #005fa3;
+  background-color: #111;
 }
 
 .container {
