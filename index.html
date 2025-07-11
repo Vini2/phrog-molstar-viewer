@@ -36,6 +36,10 @@
     <label for="pdb-input">Upload your PDB file here:</label>
     <input type="file" id="pdbFileInput" accept=".pdb" />
 
+    <label for="pdb-url">Or load from a URL:</label>
+    <input type="text" id="pdbUrlInput" placeholder="Enter .pdb file URL" />
+    <button id="loadFromUrlBtn">Load from URL</button>
+
     <!-- Molstar container -->
     <div id="myViewer"></div>
 
@@ -43,7 +47,10 @@
       const viewerInstance = new PDBeMolstarPlugin();
       const viewerContainer = document.getElementById('myViewer');
       const fileInput = document.getElementById('pdbFileInput');
+      const urlInput = document.getElementById('pdbUrlInput');
+      const loadFromUrlBtn = document.getElementById('loadFromUrlBtn');
 
+      // Load from uploaded file
       fileInput.addEventListener('change', async (event) => {
         const file = event.target.files[0];
         if (!file) return;
@@ -55,6 +62,25 @@
             binary: false,
           },
           
+        };
+
+        viewerInstance.render(viewerContainer, options);
+      });
+
+      // Load from URL
+      loadFromUrlBtn.addEventListener('click', async () => {
+        const url = urlInput.value.trim();
+        if (!url) {
+          alert('Please enter a valid PDB file URL.');
+          return;
+        }
+
+        const options = {
+          customData: {
+            url: url,
+            format: 'pdb',
+            binary: false
+          }
         };
 
         viewerInstance.render(viewerContainer, options);
