@@ -1,6 +1,6 @@
 # PHROG Mol* Viewer
 
-This website was created to view structures for representatives of all the PHROG protein clusters available from (https://linsalrob.github.io/PHROG_structures/)[https://linsalrob.github.io/PHROG_structures/].
+This website was created to view structures for representatives of all the PHROG protein clusters available from [https://linsalrob.github.io/PHROG_structures/](https://linsalrob.github.io/PHROG_structures/).
 
 <p align="center">
   <img src="images/ui.png" width="900">
