@@ -1,5 +1,7 @@
 # PHROG Mol* Viewer
 
+![GitHub License](https://img.shields.io/github/license/Vini2/phrog-molstar-viewer)
+
 This website was created to view structures for representatives of all the PHROG protein clusters available from [https://linsalrob.github.io/PHROG_structures/](https://linsalrob.github.io/PHROG_structures/).
 
 Check out the website **[vini2.github.io/phrog-molstar-viewer/](https://vini2.github.io/phrog-molstar-viewer/)**.
