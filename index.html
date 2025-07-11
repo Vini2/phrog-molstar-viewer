@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>View PHROG structures using PDBe Molstar plugin</title>
+
+    <!-- Molstar CSS & JS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/pdbe-molstar@3.2.0/build/pdbe-molstar.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/pdbe-molstar@3.2.0/build/pdbe-molstar-plugin.js"
+    ></script>
+
+    <style>
+      #myViewer {
+        float: left;
+        width: 1000px;
+        height: 500px;
+        position: relative;
+        margin: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>View PHROG structures using PDBe Molstar plugin</h3>
+    <input type="file" id="pdbFileInput" accept=".pdb" />
+
+    <!-- Molstar container -->
+    <div id="myViewer"></div>
+
+    <script>
+      const viewerInstance = new PDBeMolstarPlugin();
+      const viewerContainer = document.getElementById('myViewer');
+      const fileInput = document.getElementById('pdbFileInput');
+
+      fileInput.addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const options = {
+          customData: {
+            url: URL.createObjectURL(file),
+            format: 'pdb',
+            binary: false,
+          },
+          
+        };
+
+        viewerInstance.render(viewerContainer, options);
+      });
+
+    </script>
+  </body>
+</html>
