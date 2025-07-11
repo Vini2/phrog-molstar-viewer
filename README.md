@@ -8,6 +8,6 @@ Check out the website **[vini2.github.io/phrog-molstar-viewer/](https://vini2.gi
   <img src="images/ui.png" width="900">
 </p>
 
-You can upload your own `.pdb` file or provide a URL to a `.pdb` or gzipped `.pdb` file (`.pdb.gz`).
+You can upload your own `.pdb` file or provide a URL to a `.pdb` or gzipped `.pdb` file (`.pdb.gz`). You can test using the sample data provided in the [data](https://github.com/Vini2/phrog-molstar-viewer/tree/main/data) folder.
 
 Please check the [GitHub repo](https://github.com/linsalrob/PHROG_structures/) if you want to download the raw data of the structures.
