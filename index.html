@@ -2,55 +2,117 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
-    <title>View PHROG structures using PDBe Molstar plugin</title>
+    <title>PHROG Structure Viewer – PDBe Mol*</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Molstar CSS & JS -->
+    <!-- PDBe Mol* Plugin CSS & JS -->
     <link
       rel="stylesheet"
-      type="text/css"
       href="https://cdn.jsdelivr.net/npm/pdbe-molstar@3.2.0/build/pdbe-molstar.css"
     />
     <script
-      type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/pdbe-molstar@3.2.0/build/pdbe-molstar-plugin.js"
     ></script>
 
     <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f6f9;
+        margin: 0;
+        padding: 2rem;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .controls {
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        padding: 1.5rem 2rem;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      input[type='file'],
+      input[type='text'] {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        margin-top: 1rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        color: white;
+        background-color: #0077cc;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #005fa3;
+      }
+
       #myViewer {
-        float: left;
-        width: 1000px;
-        height: 500px;
         position: relative;
-        margin: 20px;
+        width: 100%;
+        height: 100%;
+      }
+
+      .container {
+        width: 1200px;
+        height: 800px;
+        min-height: 800px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 768px) {
+        #myViewer {
+          height: 400px;
+        }
       }
     </style>
   </head>
 
   <body>
-    <h3>View PHROG structures using PDBe Molstar plugin</h3>
+    <h2>View PHROG Structures Using PDBe Mol* Plugin</h2>
 
-    <label for="pdb-input">Upload your PDB file here:</label>
-    <input type="file" id="pdbFileInput" accept=".pdb" />
+    <div class="controls">
+      <label for="pdbFileInput">Upload your PDB file:</label>
+      <input type="file" id="pdbFileInput" accept=".pdb" />
 
-    <label for="pdb-url">Or load from a URL:</label>
-    <input type="text" id="pdbUrlInput" placeholder="Enter .pdb file URL" />
-    <button id="loadFromUrlBtn">Load from URL</button>
+      <label for="pdbUrlInput">Or load from a PDB URL:</label>
+      <input type="text" id="pdbUrlInput" placeholder="https://files.rcsb.org/view/1abc.pdb" />
+      <button id="loadFromUrlBtn">Load from URL</button>
+    </div>
 
-    <!-- Molstar container -->
-    <div id="myViewer"></div>
+    <div class="container">
+      <div id="myViewer"></div>
+    </div>
 
     <script>
-      const viewerInstance = new PDBeMolstarPlugin();
       const viewerContainer = document.getElementById('myViewer');
       const fileInput = document.getElementById('pdbFileInput');
       const urlInput = document.getElementById('pdbUrlInput');
       const loadFromUrlBtn = document.getElementById('loadFromUrlBtn');
 
-      // Load from uploaded file
+      const viewerInstance = new PDBeMolstarPlugin();
+
+      // Load local file
       fileInput.addEventListener('change', async (event) => {
         const file = event.target.files[0];
         if (!file) return;
@@ -59,9 +121,8 @@
           customData: {
             url: URL.createObjectURL(file),
             format: 'pdb',
-            binary: false,
-          },
-          
+            binary: false
+          }
         };
 
         viewerInstance.render(viewerContainer, options);
@@ -85,7 +146,6 @@
 
         viewerInstance.render(viewerContainer, options);
       });
-
     </script>
   </body>
 </html>
