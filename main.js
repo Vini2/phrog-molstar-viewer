@@ -10,11 +10,13 @@ fileInput.addEventListener('change', async (event) => {
   const file = event.target.files[0];
   if (!file) return;
 
+  const isGz = file.name.endsWith('.gz');
+
   const options = {
     customData: {
       url: URL.createObjectURL(file),
       format: 'pdb',
-      binary: false
+      binary: isGz
     }
   };
 
@@ -29,11 +31,13 @@ loadFromUrlBtn.addEventListener('click', async () => {
     return;
   }
 
+  const isGz = url.toLowerCase().endsWith('.gz');
+
   const options = {
     customData: {
       url: url,
       format: 'pdb',
-      binary: false
+      binary: isGz
     }
   };
 
