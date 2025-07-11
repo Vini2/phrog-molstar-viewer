@@ -1,9 +1,20 @@
+/**
+ * main.js
+ * PDBe Mol* viewer logic with support for local files and remote URLs
+ * Author: Vijinim Mallawaarachchi
+ */
+
 const viewerContainer = document.getElementById('myViewer');
 const fileInput = document.getElementById('pdbFileInput');
 const urlInput = document.getElementById('pdbUrlInput');
 const loadFromUrlBtn = document.getElementById('loadFromUrlBtn');
 
 const viewerInstance = new PDBeMolstarPlugin();
+
+// Render empty viewer on page load
+// viewerInstance.render(viewerContainer, {
+//   customData: null, // no structure on load
+// });
 
 // Load local file
 fileInput.addEventListener('change', async (event) => {
