@@ -11,11 +11,6 @@ const loadFromUrlBtn = document.getElementById('loadFromUrlBtn');
 
 const viewerInstance = new PDBeMolstarPlugin();
 
-// Render empty viewer on page load
-// viewerInstance.render(viewerContainer, {
-//   customData: null, // no structure on load
-// });
-
 // Load local file
 fileInput.addEventListener('change', async (event) => {
   const file = event.target.files[0];
