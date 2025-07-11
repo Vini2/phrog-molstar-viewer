@@ -5,87 +5,14 @@
     <title>PHROG Structure Viewer – PDBe Mol*</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- PDBe Mol* Plugin CSS & JS -->
+    <!-- PDBe Mol* Plugin CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/pdbe-molstar@3.2.0/build/pdbe-molstar.css"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/pdbe-molstar@3.2.0/build/pdbe-molstar-plugin.js"
-    ></script>
 
-    <style>
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #f4f6f9;
-        margin: 0;
-        padding: 2rem;
-      }
-
-      h2 {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-
-      .controls {
-        max-width: 600px;
-        margin: 0 auto 2rem;
-        padding: 1.5rem 2rem;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-      }
-
-      label {
-        display: block;
-        font-weight: bold;
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      input[type='file'],
-      input[type='text'] {
-        width: 100%;
-        padding: 0.5rem;
-        font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-
-      button {
-        margin-top: 1rem;
-        padding: 0.6rem 1.2rem;
-        font-size: 1rem;
-        color: white;
-        background-color: #0077cc;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #005fa3;
-      }
-
-      #myViewer {
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-
-      .container {
-        width: 1200px;
-        height: 800px;
-        min-height: 800px;
-        margin: 0 auto;
-      }
-
-      @media (max-width: 768px) {
-        #myViewer {
-          height: 400px;
-        }
-      }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -96,7 +23,11 @@
       <input type="file" id="pdbFileInput" accept=".pdb" />
 
       <label for="pdbUrlInput">Or load from a PDB URL:</label>
-      <input type="text" id="pdbUrlInput" placeholder="https://files.rcsb.org/view/1abc.pdb" />
+      <input
+        type="text"
+        id="pdbUrlInput"
+        placeholder="https://files.rcsb.org/view/1abc.pdb"
+      />
       <button id="loadFromUrlBtn">Load from URL</button>
     </div>
 
@@ -104,48 +35,10 @@
       <div id="myViewer"></div>
     </div>
 
-    <script>
-      const viewerContainer = document.getElementById('myViewer');
-      const fileInput = document.getElementById('pdbFileInput');
-      const urlInput = document.getElementById('pdbUrlInput');
-      const loadFromUrlBtn = document.getElementById('loadFromUrlBtn');
+    <!-- PDBe Mol* Plugin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/pdbe-molstar@3.2.0/build/pdbe-molstar-plugin.js"></script>
 
-      const viewerInstance = new PDBeMolstarPlugin();
-
-      // Load local file
-      fileInput.addEventListener('change', async (event) => {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        const options = {
-          customData: {
-            url: URL.createObjectURL(file),
-            format: 'pdb',
-            binary: false
-          }
-        };
-
-        viewerInstance.render(viewerContainer, options);
-      });
-
-      // Load from URL
-      loadFromUrlBtn.addEventListener('click', async () => {
-        const url = urlInput.value.trim();
-        if (!url) {
-          alert('Please enter a valid PDB file URL.');
-          return;
-        }
-
-        const options = {
-          customData: {
-            url: url,
-            format: 'pdb',
-            binary: false
-          }
-        };
-
-        viewerInstance.render(viewerContainer, options);
-      });
-    </script>
+    <!-- Custom JS -->
+    <script src="main.js"></script>
   </body>
 </html>
