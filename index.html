@@ -21,10 +21,10 @@
     </header>
 
     <div class="controls">
-      <label for="pdbFileInput">Upload your PDB file:</label>
+      <label for="pdbFileInput">Upload your PDB file (.pdb):</label>
       <input type="file" id="pdbFileInput" accept=".pdb" />
 
-      <label for="pdbUrlInput">Or load from a PDB URL:</label>
+      <label for="pdbUrlInput">Or load from a PDB URL (.pdb or .pdb.gz):</label>
       <input
         type="text"
         id="pdbUrlInput"
@@ -39,6 +39,9 @@
 
     <!-- PDBe Mol* Plugin JS -->
     <script src="https://cdn.jsdelivr.net/npm/pdbe-molstar@3.2.0/build/pdbe-molstar-plugin.js"></script>
+
+    <!-- Pako JS for Gzip support -->
+    <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
 
     <!-- Custom JS -->
     <script src="main.js"></script>

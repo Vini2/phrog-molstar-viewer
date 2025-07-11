@@ -29,13 +29,50 @@ loadFromUrlBtn.addEventListener('click', async () => {
     return;
   }
 
-  const options = {
-    customData: {
-      url: url,
-      format: 'pdb',
-      binary: false
-    }
-  };
+  const isGz = url.toLowerCase().endsWith('.gz');
 
-  viewerInstance.render(viewerContainer, options);
+  if (isGz) {
+    // Call the decompression loader
+    loadGzPdbToViewer(url);
+  } else {
+    // Load directly as normal
+    const options = {
+      customData: {
+        url: url,
+        format: 'pdb',
+        binary: false
+      }
+    };
+    viewerInstance.render(viewerContainer, options);
+  }
+
 });
+
+async function loadGzPdbToViewer(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+
+    const gzBuffer = await response.arrayBuffer();
+
+    // Decompress using pako
+    const decompressed = pako.inflate(gzBuffer, { to: 'string' });
+
+    const blob = new Blob([decompressed], { type: 'text/plain' });
+    const pdbUrl = URL.createObjectURL(blob);
+
+    const options = {
+      customData: {
+        url: pdbUrl,
+        format: 'pdb',
+        binary: false
+      }
+    };
+
+    viewerInstance.render(viewerContainer, options);
+  } catch (err) {
+    alert('Failed to load and decompress .pdb.gz:\n' + err.message);
+    console.error(err);
+  }
+}
+
