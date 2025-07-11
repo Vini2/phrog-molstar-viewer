@@ -2,6 +2,8 @@
 
 This website was created to view structures for representatives of all the PHROG protein clusters available from [https://linsalrob.github.io/PHROG_structures/](https://linsalrob.github.io/PHROG_structures/).
 
+Check out the website **[vini2.github.io/phrog-molstar-viewer/](https://vini2.github.io/phrog-molstar-viewer/)**.
+
 <p align="center">
   <img src="images/ui.png" width="900">
 </p>
