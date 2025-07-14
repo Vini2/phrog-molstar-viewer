@@ -54,6 +54,7 @@ loadFromUrlBtn.addEventListener('click', async () => {
 
 });
 
+// Load and decompress .pdb.gz files
 async function loadGzPdbToViewer(url) {
   try {
     const response = await fetch(url);
