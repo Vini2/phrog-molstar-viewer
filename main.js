@@ -86,3 +86,12 @@ async function loadGzPdbToViewer(url) {
   }
 }
 
+// Toggle spin
+function toggleSpin() {
+  viewerInstance.visual.toggleSpin();
+}
+
+// Toggle controls visibility
+function toggleControls() {
+  viewerInstance.canvas.toggleControls();
+}
