@@ -50,7 +50,10 @@ loadFromUrlBtn.addEventListener('click', async () => {
         url: url,
         format: 'pdb',
         binary: false
-      }
+      },
+      alphafoldView: true,
+      sequencePanel: true,
+      landscape: true,
     };
     viewerInstance.render(viewerContainer, options);
   }
@@ -76,7 +79,10 @@ async function loadGzPdbToViewer(url) {
         url: pdbUrl,
         format: 'pdb',
         binary: false
-      }
+      },
+      alphafoldView: true,
+      sequencePanel: true,
+      landscape: true,
     };
 
     viewerInstance.render(viewerContainer, options);
