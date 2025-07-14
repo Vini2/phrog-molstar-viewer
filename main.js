@@ -21,7 +21,10 @@ fileInput.addEventListener('change', async (event) => {
       url: URL.createObjectURL(file),
       format: 'pdb',
       binary: false
-    }
+    },
+    alphafoldView: true,
+    sequencePanel: true,
+    landscape: true,
   };
 
   viewerInstance.render(viewerContainer, options);
